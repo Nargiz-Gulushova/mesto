@@ -1,0 +1,17 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 38.25px 19px 36px;
+}
+
+@media screen and (min-width: 1280px) {
+  .profile {
+    flex-direction: row;
+    justify-content: center;
+    max-width: 880px;
+    padding-bottom: 51px;
+    padding-top: 35px;
+  }
+}

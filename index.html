@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Mesto</title>
+</head>
+<body class="page">
+  <header class="header">
+    <img class="header__logo" src="./images/logo.svg" alt="Логотип Mesto Russia">
+    <hr class="header__hr-line">
+  </header>
+  <main class="content">
+    <section class="profile">
+      <img class="profile__avatar" src="./images/Jacques_Cousteau.png" alt="Фото профиля Жака-Ива Кусто">
+      <div class="profile__info">
+        <h1 class="profile__name">Жак-Ив Кусто</h1>
+        <button class="profile__edit-button"><img src="./images/edit-button.svg" alt="Кнопка редактирования"></button>
+        <p class="profile__job">Исследователь океана</p>
+      </div>
+      <button class="profile__add-button"><img src="./images/add-button.svg" alt="Кнопка Добавить"></button>
+    </section>
+    <section class="mesto">
+      <ul class="mesto__list">
+        <li class="mesto__item">
+          <img class="mesto__image" src="./images/kirill-pershin-1088404-unsplash (1).png" alt="церквушка в горах">
+          <div class="mesto__wrap">
+            <h2 class="mesto__title">Карачаево-Черкесия</h2>
+            <button class="mesto__like-button"></button>
+          </div>
+        </li>
+        <li class="mesto__item">
+          <img class="mesto__image" src="./images/kirill-pershin-1404681-unsplash (1).png" alt="вершина Эльбрус на горизонте">
+          <div class="mesto__wrap">
+            <h2 class="mesto__title">Гора Эльбрус</h2>
+            <button class="mesto__like-button"></button>
+          </div>
+        </li>
+        <li class="mesto__item"><img class="mesto__image" src="./images/kirill-pershin-1556355-unsplash (1).png" alt="лес и горы">
+          <div class="mesto__wrap">
+            <h2 class="mesto__title">Домбай</h2>
+            <button class="mesto__like-button"></button>
+          </div>
+        </li>
+        <li class="mesto__item"><img class="mesto__image" src="./images/kirill-pershin-1404681-unsplash (1).png" alt="вершина Эльбрус на горизонте">
+          <div class="mesto__wrap">
+            <h2 class="mesto__title">Гора Эльбрус</h2>
+            <button class="mesto__like-button"></button>
+          </div>
+        </li>
+        <li class="mesto__item"><img class="mesto__image" src="./images/kirill-pershin-1556355-unsplash (1).png" alt="лес и горы">
+          <div class="mesto__wrap">
+            <h2 class="mesto__title">Домбай</h2>
+            <button class="mesto__like-button"></button>
+          </div>
+        </li>
+        <li class="mesto__item"><img class="mesto__image" src="./images/kirill-pershin-1088404-unsplash (1).png" alt="церквушка в горах">
+          <div class="mesto__wrap">
+            <h2 class="mesto__title">Карачаевск</h2>
+            <button class="mesto__like-button"></button>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">© 2023 Mesto Russia</p>
+  </footer>
+  <section class="popup">
+    <div class="popup__container">
+      <button class="popup__close"></button>
+      <div class="popup__content">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class = "popup__form">
+          <input class="popup__name" type="text" placeholder="Ваше имя" name="name">
+          <input class="popup__job" type="text" placeholder="Род занятий" name="job">
+          <button class="popup__submit-button" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  <script src="./scripts/index.js"></script>
+</body>
+</html>
