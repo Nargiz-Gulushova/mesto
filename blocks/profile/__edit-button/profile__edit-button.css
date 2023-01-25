@@ -5,9 +5,10 @@
   border: 2px solid #FFFFFF;
   background-color: transparent;
   cursor: pointer;
+  transition: opacity .5s ease;
 }
 
-profile__edit-button:hover {
+.profile__edit-button:hover {
   opacity: 60%;
 }
 

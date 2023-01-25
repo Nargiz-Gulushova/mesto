@@ -8,4 +8,10 @@
   width: 22px;
   height: 19px;
   background-color: transparent;
+  cursor: pointer;
+  transition: opacity .5s ease;
+}
+
+.mesto__like-button:hover {
+  opacity: 60%;
 }

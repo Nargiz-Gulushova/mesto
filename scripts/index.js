@@ -4,22 +4,25 @@ const profileElement = document.querySelector('.profile');
 const popupOpenElement = profileElement.querySelector('.profile__edit-button')
 const popupCloseElement = popupElement.querySelector('.popup__close');
 const formElement = popupElement.querySelector('.popup__form');
-let nameInput = formElement.querySelector('.popup__name');
-let jobInput = formElement.querySelector('.popup__job');
+let nameInput = formElement.querySelector('.popup__input_type_name');
+let jobInput = formElement.querySelector('.popup__input_type_job');
 let profileName = profileElement.querySelector('.profile__name');
 let profileJob = profileElement.querySelector('.profile__job');
 
-// Функция для добавления/удаления класса открытия попапа
-//(будем использовать для кнопок редакта и крестика, т.е. для случаев, когда значение полей равно значению профиля)
-const togglePopupVisibility= function() {
-  popupElement.classList.toggle('popup_opened');
+// Функции для добавления и удаления класса открытия попапа
+const openPopup = function() {
+  popupElement.classList.add('popup_opened');
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 }
 
+const closePopup = function() {
+  popupElement.classList.remove('popup_opened');
+}
+
 //Добавляем слушатели для кнопок редакта и крестика
-popupOpenElement.addEventListener('click', togglePopupVisibility);
-popupCloseElement.addEventListener('click', togglePopupVisibility);
+popupOpenElement.addEventListener('click', openPopup);
+popupCloseElement.addEventListener('click', closePopup);
 
 
 // Функция для удаления класса открытия попапа для кнопки Сохранить
@@ -31,7 +34,7 @@ function handleFormSubmit (evt) {
 
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
-  popupElement.classList.remove('popup_opened');
+  closePopup();
 }
 
 
