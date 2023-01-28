@@ -15,7 +15,7 @@
   overflow: hidden;
 }
 
-.popup__input:nth-of-type(2) {
+.popup__input:last-of-type {
   margin-bottom: 45px;
 }
 
@@ -24,7 +24,7 @@
     max-width: 358px;
   }
 
-  .popup__input:nth-of-type(2) {
+  .popup__input:last-of-type {
     margin-bottom: 48px;
   }
 }
