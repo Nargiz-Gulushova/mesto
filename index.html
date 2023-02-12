@@ -23,67 +23,61 @@
     </section>
     <section class="mesto">
       <ul class="mesto__list">
-        <li class="mesto__item">
-          <img class="mesto__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="церквушка в горах">
-          <div class="mesto__wrap">
-            <h2 class="mesto__title">Карачаево-Черкесия</h2>
-            <button class="mesto__like-button" aria-label="Нравится" type="button"></button>
-          </div>
-        </li>
-        <li class="mesto__item">
-          <img class="mesto__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="вершина Эльбрус на горизонте">
-          <div class="mesto__wrap">
-            <h2 class="mesto__title">Гора Эльбрус</h2>
-            <button class="mesto__like-button" aria-label="Нравится" type="button"></button>
-          </div>
-        </li>
-        <li class="mesto__item">
-          <img class="mesto__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="лес и горы">
-          <div class="mesto__wrap">
-            <h2 class="mesto__title">Домбай</h2>
-            <button class="mesto__like-button" aria-label="Нравится" type="button"></button>
-          </div>
-        </li>
-        <li class="mesto__item">
-          <img class="mesto__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="вершина Эльбрус на горизонте">
-          <div class="mesto__wrap">
-            <h2 class="mesto__title">Гора Эльбрус</h2>
-            <button class="mesto__like-button" aria-label="Нравится" type="button"></button>
-          </div>
-        </li>
-        <li class="mesto__item">
-          <img class="mesto__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="лес и горы">
-          <div class="mesto__wrap">
-            <h2 class="mesto__title">Домбай</h2>
-            <button class="mesto__like-button" aria-label="Нравится" type="button"></button>
-          </div>
-        </li>
-        <li class="mesto__item">
-          <img class="mesto__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="церквушка в горах">
-          <div class="mesto__wrap">
-            <h2 class="mesto__title">Карачаевск</h2>
-            <button class="mesto__like-button" aria-label="Нравится" type="button"></button>
-          </div>
-        </li>
       </ul>
     </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">© 2023 Mesto Russia</p>
   </footer>
-  <div class="popup">
+  <!---Попап редактирования профиля--->
+  <div class="popup popup_edit-profile">
     <div class="popup__container">
-      <button class="popup__close" aria-label="Закрыть" type="button"></button>
+      <button class="popup__close popup__close_edit-profile" aria-label="Закрыть" type="button"></button>
       <div class="popup__content">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class = "popup__form" name="form">
+        <form class = "popup__form popup__form_edit-profile" name="form">
           <input class="popup__input popup__input_type_name" type="text" placeholder="Ваше имя" name="name">
           <input class="popup__input popup__input_type_job" type="text" placeholder="Род занятий" name="job">
-          <button class="popup__submit-button" type="submit">Сохранить</button>
+          <button class="popup__submit-button popup__submit-button_edit-profile" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
   </div>
+  <!---Попап добавления новых мест-->
+  <div class="popup popup_add-mesto">
+    <div class="popup__container">
+      <button class="popup__close popup__close_add-mesto" aria-label="Закрыть" type="button"></button>
+      <div class="popup__content">
+        <h2 class="popup__title">Новое место</h2>
+        <form class = "popup__form popup__form_add-mesto" name="form">
+          <input class="popup__input popup__input_type_title" type="text" placeholder="Название" name="title">
+          <input class="popup__input popup__input_type_image" type="url" placeholder="Ссылка на картинку" name="image">
+          <button class="popup__submit-button popup__submit-button_add-mesto" type="submit">Создать</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!---Попап открытия картинки-->
+  <div class="popup popup_img">
+    <div class="popup__container-img">
+      <button class="popup__close popup__close_img" aria-label="Закрыть" type="button"></button>
+      <figure class="popup__figure">
+        <img class="popup__image" src="#" alt="#">
+        <figcaption class="popup__caption"></figcaption>
+      </figure>
+    </div>
+  </div>
+  <!--ТЕМПЛЕЙТ-->>
+  <template id="mesto-template">
+    <li class="mesto__item">
+      <button class="mesto__delete-button" aria-label="Удалить" type="button"></button>
+      <img class="mesto__image" src="" alt="">
+      <div class="mesto__wrap">
+        <h2 class="mesto__title"></h2>
+        <button class="mesto__like-button" aria-label="Нравится" type="button"></button>
+      </div>
+    </li>
+  </template>
   <script src="./scripts/index.js"></script>
 </body>
 </html>

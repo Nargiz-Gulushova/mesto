@@ -18,6 +18,7 @@
 @import url(../blocks/mesto/mesto.css);
 @import url(../blocks/mesto/__list/mesto__list.css);
 @import url(../blocks/mesto/__item/mesto__item.css);
+@import url(../blocks/mesto/__delete-button/mesto__delete-button.css);
 @import url(../blocks/mesto/__image/mesto__image.css);
 @import url(../blocks/mesto/__wrap/mesto__wrap.css);
 @import url(../blocks/mesto/__title/mesto__title.css);
@@ -29,10 +30,17 @@
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/_edit-profile/popup_edit-profile.css);
+@import url(../blocks/popup/_add-mesto/popup_add-mesto.css);
+@import url(../blocks/popup/_img/popup_img.css);
 @import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__container-img/popup__container-img.css);
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/__content/popup__content.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__submit-button/popup__submit-button.css);
+@import url(../blocks/popup/__figure/popup__figure.css);
+@import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__caption/popup__caption.css);
