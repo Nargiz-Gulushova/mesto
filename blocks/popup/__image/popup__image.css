@@ -2,7 +2,7 @@
   margin: 0 auto;
   padding: 0;
   object-position: center;
-  object-fit: cover;
+  object-fit: scale-down;
   max-width: 75vw;
   max-height: 75vh;
   min-height: 299px;
