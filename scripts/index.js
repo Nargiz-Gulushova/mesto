@@ -1,24 +1,3 @@
-//ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ
-const profileElement = document.querySelector('.profile');
-//const popupElement = document.querySelector('.popup'); это некорректная переменная, я ее не использую, для каждого попапа у меня есть константа с поиском их модификаторов
-//const formElement = popupElement.querySelector('.popup__form'); тоже некорректно я ее объявила вначале, либо через querySelectorAll надо выводить колекцию всех форм, но в проекте я не использую это
-const popupEditProfile = document.querySelector('.popup_edit-profile'); //попап редактирования профиля
-const buttenOpenPopupProfile = profileElement.querySelector('.profile__edit-button');
-const buttenClosePopupProfile = popupEditProfile.querySelector('.popup__close_edit-profile');
-const formProfile = popupEditProfile.querySelector('.popup__form_edit-profile');
-const nameInput = document.querySelector('.popup__input_type_name');//заменила formElement на document, т.к. по сути неправильная была переменная, она бы не нашла мне эти формы, если бы они были не первыми в html
-const jobInput = document.querySelector('.popup__input_type_job');// то же самое
-const profileName = profileElement.querySelector('.profile__name');
-const profileJob = profileElement.querySelector('.profile__job');
-const popupAddMesto = document.querySelector('.popup_add-mesto');
-const popupOpenAddMesto = profileElement.querySelector('.profile__add-button');
-const popupCloseAddMesto = popupAddMesto.querySelector('.popup__close_add-mesto');
-const titleInput = document.querySelector('.popup__input_type_title');
-const imageInput = document.querySelector('.popup__input_type_image');
-const formMesto = document.querySelector('.popup__form_add-mesto');
-const popupImg = document.querySelector('.popup_img');
-const popupCloseImg = popupImg.querySelector('.popup__close_img');
-const mestoList = document.querySelector('.mesto__list'); //ul-container with cards in html
 
 //ФУНКЦИИ
 // функции открытия и закрытия попапов
@@ -67,9 +46,11 @@ const openEditProfilePopup = () => {
     //создание DOM-элемента из темплейт, наполнение его содержимым
     const mestoTemplate = document.querySelector('#mesto-template').content;
     const mestoElement = mestoTemplate.querySelector('.mesto__item').cloneNode(true);
-    mestoElement.querySelector('.mesto__image').src= link;
-    mestoElement.querySelector('.mesto__title').textContent = name;
-    mestoElement.querySelector('.mesto__image').alt = name;
+    const mestoImage = mestoElement.querySelector('.mesto__image');
+    const mestoTitle = mestoElement.querySelector('.mesto__title');//для тайтл также сделала константу для читабельности кода
+    mestoImage.src= link;
+    mestoImage.alt = name;
+    mestoTitle.textContent = name;
 
     //слушатель на корзину
     mestoElement.querySelector('.mesto__delete-button').addEventListener('click', (evt) => {
@@ -84,16 +65,13 @@ const openEditProfilePopup = () => {
 
     const popupOpenImg = mestoElement.querySelector('.mesto__image');
 
-    const popupCaption = popupImg.querySelector('.popup__caption');
-    const popupImage = popupImg.querySelector('.popup__image');
-
 
     //слушатели на открытие модального окна с картинкой
     popupOpenImg.addEventListener('click', (popupElement) => {
-      openPopup(popupImg);
       popupCaption.textContent = name;
       popupImage.src = link;
       popupImage.alt = name;
+      openPopup(popupImg);
     });
 
     //возвращаем dom-элемент карточки
@@ -135,11 +113,13 @@ function editHandleFormSubmit (evt) {
 //слушатель на обработчик по сабмит
 formProfile.addEventListener('submit', editHandleFormSubmit);
 
-
+const openAddMestoPopup = () => {
+  openPopup(popupAddMesto);
+}
 
 //слушатели на открытие/закрытие попапа новой карточки
-popupOpenAddMesto.addEventListener('click', (popupElement) => {
-  openPopup(popupAddMesto);
+popupOpenAddMesto.addEventListener('click', () => {
+  openAddMestoPopup();
 });
 
 
@@ -155,9 +135,9 @@ function addHandleFormSubmit (evt) {
   const newMesto = createMestoElement(titleInput.value, imageInput.value);
   mestoList.prepend(newMesto);
   closePopup(popupAddMesto);
-  evt.target.reset();//очищаем поля формы с помощью метода формы reset вместо способа ниже
-  //titleInput.value = '';
-  //imageInput.value = '';
+  evt.target.reset();
+  //const popupOpened = document.querySelector('.popup_opened');
+  //popupOpened.querySelector('.popup__submit_button').disabled = true;
 }
 
 //слушатель на обработчик по сабмит

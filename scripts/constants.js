@@ -1,0 +1,23 @@
+//ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ
+const profileElement = document.querySelector('.profile');
+//const popupElement = document.querySelector('.popup'); это некорректная переменная, я ее не использую, для каждого попапа у меня есть константа с поиском их модификаторов
+//const formElement = popupElement.querySelector('.popup__form'); тоже некорректно я ее объявила вначале, либо через querySelectorAll надо выводить колекцию всех форм, но в проекте я не использую это
+const popupEditProfile = document.querySelector('.popup_edit-profile'); //попап редактирования профиля
+const buttenOpenPopupProfile = profileElement.querySelector('.profile__edit-button');
+const buttenClosePopupProfile = popupEditProfile.querySelector('.popup__close_edit-profile');
+const formProfile = popupEditProfile.querySelector('.popup__form_edit-profile');
+const nameInput = document.querySelector('.popup__input_type_name');//заменила formElement на document, т.к. по сути неправильная была переменная, она бы не нашла мне эти формы, если бы они были не первыми в html
+const jobInput = document.querySelector('.popup__input_type_job');// то же самое
+const profileName = profileElement.querySelector('.profile__name');
+const profileJob = profileElement.querySelector('.profile__job');
+const popupAddMesto = document.querySelector('.popup_add-mesto');
+const popupOpenAddMesto = profileElement.querySelector('.profile__add-button');
+const popupCloseAddMesto = popupAddMesto.querySelector('.popup__close_add-mesto');
+const titleInput = document.querySelector('.popup__input_type_title');
+const imageInput = document.querySelector('.popup__input_type_image');
+const formMesto = document.querySelector('.popup__form_add-mesto');
+const popupImg = document.querySelector('.popup_img');
+const popupCloseImg = popupImg.querySelector('.popup__close_img');
+const mestoList = document.querySelector('.mesto__list'); //ul-container with cards in html
+const popupCaption = popupImg.querySelector('.popup__caption');
+const popupImage = popupImg.querySelector('.popup__image');
