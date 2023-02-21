@@ -22,12 +22,37 @@ const mestoList = document.querySelector('.mesto__list'); //ul-container with ca
 
 //ФУНКЦИИ
 // функции открытия и закрытия попапов
-const openPopup = function(popupElement) {
-  popupElement.classList.add('popup_opened');
+
+const closePopupByOverlay = (evt) => {
+  const popupOpened = document.querySelector('.popup_opened')
+	if(evt.target === popupOpened) {
+    closePopup(popupOpened);
+	}
 }
+
+const closePopupByEsc = (evt) => {
+  const popupOpened = document.querySelector('.popup_opened')
+	if( evt.key === 'Escape') {
+		closePopup(popupOpened);
+	}
+}
+
+function openPopup(popupElement) {
+  popupElement.classList.add('popup_opened');
+  popupElement.addEventListener('click', closePopupByOverlay);
+  document.addEventListener('keydown', closePopupByEsc);
+}
+
 const closePopup = function(popupElement) {
   popupElement.classList.remove('popup_opened');
+  popupElement.removeEventListener('click', closePopupByOverlay);
+  document.removeEventListener('keydown', closePopupByEsc);
 }
+
+
+//popupEditProfile.addEventListener('click', closePopupByOverlay);
+//document.addEventListener('keydown', closePopupByEsc);
+//
 
 //присвоим переменную функции открытия попапа редактирования профиля для улучшения читаемости слушателя
 const openEditProfilePopup = () => {
@@ -56,7 +81,7 @@ const openEditProfilePopup = () => {
       evt.target.classList.toggle('mesto__like-button_active');
     });
 
-    //константы для закрытия просмотра изображения
+
     const popupOpenImg = mestoElement.querySelector('.mesto__image');
 
     const popupCaption = popupImg.querySelector('.popup__caption');
@@ -90,6 +115,8 @@ const openEditProfilePopup = () => {
 
 //CЛУШАТЕЛИ И ОБРАБОТЧИКИ
 
+
+
 //слушатели на открытие и закрытие попапа редактирования профиля
 buttenOpenPopupProfile.addEventListener('click', openEditProfilePopup);
 
@@ -114,6 +141,9 @@ formProfile.addEventListener('submit', editHandleFormSubmit);
 popupOpenAddMesto.addEventListener('click', (popupElement) => {
   openPopup(popupAddMesto);
 });
+
+
+
 
 popupCloseAddMesto.addEventListener('click', (popupElement) => {
   closePopup(popupAddMesto);
@@ -140,9 +170,6 @@ formMesto.addEventListener('submit', addHandleFormSubmit);
 popupCloseImg.addEventListener('click', (popupElement) => {
   closePopup(popupImg);
   });
-
-
-
 
 
 
