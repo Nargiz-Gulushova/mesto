@@ -1,23 +1,25 @@
+
+
 //ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ
-const profileElement = document.querySelector('.profile');
-//const popupElement = document.querySelector('.popup'); это некорректная переменная, я ее не использую, для каждого попапа у меня есть константа с поиском их модификаторов
-//const formElement = popupElement.querySelector('.popup__form'); тоже некорректно я ее объявила вначале, либо через querySelectorAll надо выводить колекцию всех форм, но в проекте я не использую это
-const popupEditProfile = document.querySelector('.popup_edit-profile'); //попап редактирования профиля
-const buttenOpenPopupProfile = profileElement.querySelector('.profile__edit-button');
-const buttenClosePopupProfile = popupEditProfile.querySelector('.popup__close_edit-profile');
-const formProfile = popupEditProfile.querySelector('.popup__form_edit-profile');
-const nameInput = document.querySelector('.popup__input_type_name');//заменила formElement на document, т.к. по сути неправильная была переменная, она бы не нашла мне эти формы, если бы они были не первыми в html
-const jobInput = document.querySelector('.popup__input_type_job');// то же самое
-const profileName = profileElement.querySelector('.profile__name');
-const profileJob = profileElement.querySelector('.profile__job');
-const popupAddMesto = document.querySelector('.popup_add-mesto');
-const popupOpenAddMesto = profileElement.querySelector('.profile__add-button');
-const popupCloseAddMesto = popupAddMesto.querySelector('.popup__close_add-mesto');
-const titleInput = document.querySelector('.popup__input_type_title');
-const imageInput = document.querySelector('.popup__input_type_image');
-const formMesto = document.querySelector('.popup__form_add-mesto');
-const popupImg = document.querySelector('.popup_img');
-const popupCloseImg = popupImg.querySelector('.popup__close_img');
-const mestoList = document.querySelector('.mesto__list'); //ul-container with cards in html
-const popupCaption = popupImg.querySelector('.popup__caption');
-const popupImage = popupImg.querySelector('.popup__image');
+export const profileElement = document.querySelector('.profile');
+export const popupEditProfile = document.querySelector('.popup_edit-profile'); //попап редактирования профиля
+export const buttenOpenPopupProfile = profileElement.querySelector('.profile__edit-button');
+export const buttenClosePopupProfile = popupEditProfile.querySelector('.popup__close_edit-profile');
+export const formProfile = popupEditProfile.querySelector('.popup__form_edit-profile');
+export const nameInput = document.querySelector('.popup__input_type_name');
+export const jobInput = document.querySelector('.popup__input_type_job');// то же самое
+export const profileName = profileElement.querySelector('.profile__name');
+export const profileJob = profileElement.querySelector('.profile__job');
+export const popupAddMesto = document.querySelector('.popup_add-mesto');
+export const popupOpenAddMesto = profileElement.querySelector('.profile__add-button');
+export const popupCloseAddMesto = popupAddMesto.querySelector('.popup__close_add-mesto');
+export const titleInput = document.querySelector('.popup__input_type_title');
+export const imageInput = document.querySelector('.popup__input_type_image');
+export const formMesto = document.querySelector('.popup__form_add-mesto');
+export const popupImg = document.querySelector('.popup_img');
+export const popupCloseImg = popupImg.querySelector('.popup__close_img');
+export const mestoList = document.querySelector('.mesto__list'); //ul-container with cards in html
+export const popupCaption = popupImg.querySelector('.popup__caption');
+export const popupImage = popupImg.querySelector('.popup__image');
+
+

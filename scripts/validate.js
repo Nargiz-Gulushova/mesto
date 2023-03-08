@@ -30,25 +30,6 @@ const checkInputValidity = (formElement, inputElement, obj) => {
     hideInputError(formElement, inputElement, obj);
     };
 }
-////вешаем слушатели на инпуты, перебирающие все инпуты (внутри вызываем функцию переключения состояния кнопки)
-const setEventListeners = (formElement, obj) => {
-  const inputList = Array.from(formElement.querySelectorAll(obj.inputSelector));
-  const buttonElement = formElement.querySelector(obj.submitButtonSelector);
-  // деактивируем кнопку при 1й загрузке сайта
-  toggleButtonState(inputList, buttonElement, obj);
-  formElement.addEventListener('reset', () => {
-    //`setTimeout` нужен для того, чтобы дождаться очищения формы (вызов уйдет в конце стека) и только потом вызвать `toggleButtonState`
-    setTimeout(() => {
-    toggleButtonState(inputList, buttonElement, obj)
-    }, 0); // достаточно указать 0 миллисекунд, чтобы после `reset` уже сработало действие
-    });
-  inputList.forEach((inputElement) => {
-    inputElement.addEventListener('input', function () {
-      checkInputValidity(formElement, inputElement, obj);
-      toggleButtonState(inputList, buttonElement, obj);
-    });
-  });
-};
 
 //перебирает инпуты и если хоть один инпут невалидный, возвращает невалид
 function hasInvalidInput (inputList) {
@@ -77,16 +58,28 @@ function toggleButtonState (inputList,buttonElement, obj) {
 };
 
 
-//в зависимости от валидности поля функция переключает состояние кнопки
-//function toggleButtonState (inputList, buttonElement, obj) {
-//  if (hasInvalidInput(inputList)) {
-//    buttonElement.classList.add(obj.inactiveButtonClass);
-//    buttonElement.disabled = true;
-//  } else {
-//    buttonElement.classList.remove(obj.inactiveButtonClass);
-//    buttonElement.disabled = false;
-//    }
-//};
+
+//вешаем слушатели на инпуты, перебирающие все инпуты (внутри вызываем функцию переключения состояния кнопки)
+const setEventListeners = (formElement, obj) => {
+  const inputList = Array.from(formElement.querySelectorAll(obj.inputSelector));
+  const buttonElement = formElement.querySelector(obj.submitButtonSelector);
+  // деактивируем кнопку при 1й загрузке сайта
+  toggleButtonState(inputList, buttonElement, obj);
+  formElement.addEventListener('reset', () => {
+    //`setTimeout` нужен для того, чтобы дождаться очищения формы (вызов уйдет в конце стека) и только потом вызвать `toggleButtonState`
+    setTimeout(() => {
+    toggleButtonState(inputList, buttonElement, obj)
+    }, 0); // достаточно указать 0 миллисекунд, чтобы после `reset` уже сработало действие
+    });
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', function () {
+      checkInputValidity(formElement, inputElement, obj);
+      toggleButtonState(inputList, buttonElement, obj);
+    });
+  });
+};
+
+
 
 //вынесли отмену станд.отправки в отд.функцию
 function disableSubmit (evt) {
@@ -107,7 +100,3 @@ function enableValidation(obj) {
 enableValidation(formValidationObj);
 
 
-
-
-/////   !!!!!!!Если сообщение об ошибке от трёх строк высотой, то размер модального окна увеличивается.
-/////   !!!!!!!При повторном добавлении карточки сабмит активный при пустых полях

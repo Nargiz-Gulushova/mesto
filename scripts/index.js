@@ -1,12 +1,42 @@
+import {initialCards} from './cards.js';
+import {
+  popupEditProfile,
+  buttenOpenPopupProfile,
+  buttenClosePopupProfile,
+  formProfile,
+  nameInput,
+  jobInput,
+  profileName,
+  profileJob,
+  popupAddMesto,
+  popupOpenAddMesto,
+  popupCloseAddMesto,
+  titleInput,
+  imageInput,
+  formMesto,
+  popupImg,
+  popupCloseImg,
+} from './constants.js';
+import Mesto from './Mesto.js';
+import FormValidator from './FormValidator.js';
+
+
+//import Mesto from './Mesto';
+//import initialCards from './cards';
+//import {profileElement, popupEditProfile, buttenOpenPopupProfile, buttenClosePopupProfile, formProfile,
+//  nameInput, jobInput, profileName, profileJob, popupAddMesto, popupOpenAddMesto, popupCloseAddMesto,
+//  titleInput, imageInput, formMesto, popupImg, popupCloseImg, mestoList, popupCaption, popupImage
+//  } from './constants';
+
 
 //ФУНКЦИИ
 // функции открытия и закрытия попапов
 
-const closePopupByOverlay = (evt) => {
-  const popupOpened = document.querySelector('.popup_opened')
-	if(evt.target === popupOpened) {
+function closePopupByOverlay(evt) {
+  const popupOpened = document.querySelector('.popup_opened');
+  if (evt.target === popupOpened) {
     closePopup(popupOpened);
-	}
+  }
 }
 
 const closePopupByEsc = (evt) => {
@@ -16,7 +46,7 @@ const closePopupByEsc = (evt) => {
 	}
 }
 
-function openPopup(popupElement) {
+export function openPopup(popupElement) {
   popupElement.classList.add('popup_opened');
   popupElement.addEventListener('click', closePopupByOverlay);
   document.addEventListener('keydown', closePopupByEsc);
@@ -29,9 +59,7 @@ const closePopup = function(popupElement) {
 }
 
 
-//popupEditProfile.addEventListener('click', closePopupByOverlay);
-//document.addEventListener('keydown', closePopupByEsc);
-//
+
 
 //присвоим переменную функции открытия попапа редактирования профиля для улучшения читаемости слушателя
 const openEditProfilePopup = () => {
@@ -41,58 +69,31 @@ const openEditProfilePopup = () => {
 };
 
 
-  //функция созадния карточки
-  const createMestoElement = (name, link) => {
-    //создание DOM-элемента из темплейт, наполнение его содержимым
-    const mestoTemplate = document.querySelector('#mesto-template').content;
-    const mestoElement = mestoTemplate.querySelector('.mesto__item').cloneNode(true);
-    const mestoImage = mestoElement.querySelector('.mesto__image');
-    const mestoTitle = mestoElement.querySelector('.mesto__title');//для тайтл также сделала константу для читабельности кода
-    mestoImage.src= link;
-    mestoImage.alt = name;
-    mestoTitle.textContent = name;
-
-    //слушатель на корзину
-    mestoElement.querySelector('.mesto__delete-button').addEventListener('click', (evt) => {
-      evt.target.closest('.mesto__item').remove();
-    });
-
-    //слушатель на лайк
-    mestoElement.querySelector('.mesto__like-button').addEventListener('click', (evt) => {
-      evt.target.classList.toggle('mesto__like-button_active');
-    });
 
 
-    const popupOpenImg = mestoElement.querySelector('.mesto__image');
+//перебором массива создаем экземпляры мест и добавляем 6 КАРТОЧЕК в разметку
+initialCards.forEach((item) => {
+  const mesto = new Mesto(item, '#mesto-template');
+  const mestoElement = mesto.generateMesto();
 
+  document.querySelector('.mesto__list').append(mestoElement);
+});
 
-    //слушатели на открытие модального окна с картинкой
-    popupOpenImg.addEventListener('click', (popupElement) => {
-      popupCaption.textContent = name;
-      popupImage.src = link;
-      popupImage.alt = name;
-      openPopup(popupImg);
-    });
+//обработчик добавления новой карточки
 
-    //возвращаем dom-элемент карточки
-    return mestoElement;
-  };
+function addHandleFormSubmit (evt) {
+  evt.preventDefault();
+  const newMesto = new Mesto ({name: titleInput.value, link: imageInput.value}, '#mesto-template');
+  const newMestoElement = newMesto.generateMesto();
+  document.querySelector('.mesto__list').prepend(newMestoElement);
+  closePopup(popupAddMesto);
+  evt.target.reset();
+}
+//слушатель новой карточки на обработчик по сабмит
 
-  //добавляем dom-элемент в разметку
-  const renderMestoElement = (name, link) => {
-    mestoList.append(createMestoElement(name, link));
-  };
-
-
-  //добавляем 6 карточек перебором массива
-  //МАССИВ С НАЧАЛЬНЫМИ КАРТОЧКАМИ ВЫНЕСЛИ В ОТДЕЛЬНЫЙ ФАЙЛ
-  initialCards.forEach((item) => {
-    renderMestoElement(item.name, item.link);
-  });
-
+formMesto.addEventListener('submit', addHandleFormSubmit);
 
 //CЛУШАТЕЛИ И ОБРАБОТЧИКИ
-
 
 
 //слушатели на открытие и закрытие попапа редактирования профиля
@@ -118,9 +119,7 @@ const openAddMestoPopup = () => {
 }
 
 //слушатели на открытие/закрытие попапа новой карточки
-popupOpenAddMesto.addEventListener('click', () => {
-  openAddMestoPopup();
-});
+popupOpenAddMesto.addEventListener('click', openAddMestoPopup);
 
 
 
@@ -129,19 +128,7 @@ popupCloseAddMesto.addEventListener('click', (popupElement) => {
   closePopup(popupAddMesto);
 });
 
-//обработчик события
-function addHandleFormSubmit (evt) {
-  evt.preventDefault();
-  const newMesto = createMestoElement(titleInput.value, imageInput.value);
-  mestoList.prepend(newMesto);
-  closePopup(popupAddMesto);
-  evt.target.reset();
-  //const popupOpened = document.querySelector('.popup_opened');
-  //popupOpened.querySelector('.popup__submit_button').disabled = true;
-}
 
-//слушатель на обработчик по сабмит
-formMesto.addEventListener('submit', addHandleFormSubmit);
 
 
 
@@ -152,13 +139,24 @@ popupCloseImg.addEventListener('click', (popupElement) => {
   });
 
 
+  //ВАЛИДАЦИЯ
 
+//Объект селекторов и классов
+const formValidationObj = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_disabled',
+  inputErrorClass: 'popup__input_type_error',//, вот здесь только красное нижнее подчеркивание в свойствах
+  errorClass: 'popup__error_visible'  //а здесь стилизация видимости и текста ошибки
+};
 
+//экземпляры класса FormValidator для каждой формы
+const editProfileFormValidator = new FormValidator (formValidationObj, formProfile);
+const addProfileFormValidator = new FormValidator(formValidationObj, formMesto);
 
+//запускаем валидацию
+editProfileFormValidator.enableValidation();
 
-
-
-
-
-
+addProfileFormValidator.enableValidation();
 
