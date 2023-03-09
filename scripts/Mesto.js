@@ -1,16 +1,9 @@
-import {
-  popupCaption,
-  popupImage,
-  popupImg,
-} from './constants.js'
-
-import { openPopup } from './index.js';
-
 export default class Mesto {
-  constructor (data, templateSelector) {
+  constructor (data, templateSelector, handleImageClick) {
     this._image = data.link;
     this._name = data.name;
     this._templateSelector = templateSelector;
+    this._handleImageClick = handleImageClick;
   }
   //создание DOM-элемента из темплейт
   _getTemplate() {
@@ -36,25 +29,26 @@ export default class Mesto {
 
     return this._element;
   };
-  //устанавливаем слушатели событий
+
+  _deleteMesto() {
+    this._element.remove()
+    //evt.target.closest('.mesto__item').remove();
+  };
+
+  _toggleLike(evt) {
+    evt.target.classList.toggle('mesto__like-button_active');
+  }
+
   _setEventListeners () {
-    this._element.querySelector('.mesto__delete-button').addEventListener('click', (evt) => {
-      evt.target.closest('.mesto__item').remove();
+    this._element.querySelector('.mesto__like-button').addEventListener ('click', this._toggleLike);
+    this._element.querySelector('.mesto__delete-button').addEventListener('click', () => {
+      this._deleteMesto();
     });
-
-    this._element.querySelector('.mesto__like-button').addEventListener('click', (evt) => {
-      evt.target.classList.toggle('mesto__like-button_active');
-    });
-
     this._element.querySelector('.mesto__image').addEventListener('click', () => {
-      popupCaption.textContent = this._name;
-      popupImage.src = this._image;
-      popupImage.alt = this._name;
-      openPopup(popupImg);
+      this._handleImageClick(this._name, this._image);
     });
   }
+
 };
-
-
 
 

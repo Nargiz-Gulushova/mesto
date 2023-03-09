@@ -14,43 +14,46 @@ import {
   titleInput,
   imageInput,
   formMesto,
+  mestoList,
   popupImg,
   popupCloseImg,
+  popupCaption,
+  popupImage,
+  closeButtons
 } from './constants.js';
 import Mesto from './Mesto.js';
 import FormValidator from './FormValidator.js';
-
-
-//import Mesto from './Mesto';
-//import initialCards from './cards';
-//import {profileElement, popupEditProfile, buttenOpenPopupProfile, buttenClosePopupProfile, formProfile,
-//  nameInput, jobInput, profileName, profileJob, popupAddMesto, popupOpenAddMesto, popupCloseAddMesto,
-//  titleInput, imageInput, formMesto, popupImg, popupCloseImg, mestoList, popupCaption, popupImage
-//  } from './constants';
 
 
 //ФУНКЦИИ
 // функции открытия и закрытия попапов
 
 function closePopupByOverlay(evt) {
-  const popupOpened = document.querySelector('.popup_opened');
-  if (evt.target === popupOpened) {
-    closePopup(popupOpened);
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.target);
   }
 }
 
 const closePopupByEsc = (evt) => {
-  const popupOpened = document.querySelector('.popup_opened')
 	if( evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened')
 		closePopup(popupOpened);
 	}
 }
 
-export function openPopup(popupElement) {
+function openPopup(popupElement) {
   popupElement.classList.add('popup_opened');
   popupElement.addEventListener('click', closePopupByOverlay);
   document.addEventListener('keydown', closePopupByEsc);
 }
+
+function handleImageClick(name, image) {
+  popupCaption.textContent = name;
+  popupImage.src = image;
+  popupImage.alt = name;
+  openPopup(popupImg);
+}
+
 
 const closePopup = function(popupElement) {
   popupElement.classList.remove('popup_opened');
@@ -68,24 +71,26 @@ const openEditProfilePopup = () => {
   jobInput.value = profileJob.textContent;
 };
 
+function createCard(item) {
+  const mesto = new Mesto(item, '#mesto-template', handleImageClick);
+  const mestoElement = mesto.generateMesto();
+  return mestoElement
+}
 
 
 
 //перебором массива создаем экземпляры мест и добавляем 6 КАРТОЧЕК в разметку
 initialCards.forEach((item) => {
-  const mesto = new Mesto(item, '#mesto-template');
-  const mestoElement = mesto.generateMesto();
-
-  document.querySelector('.mesto__list').append(mestoElement);
+  createCard(item);
+  mestoList.append(createCard(item));
 });
 
 //обработчик добавления новой карточки
 
 function addHandleFormSubmit (evt) {
   evt.preventDefault();
-  const newMesto = new Mesto ({name: titleInput.value, link: imageInput.value}, '#mesto-template');
-  const newMestoElement = newMesto.generateMesto();
-  document.querySelector('.mesto__list').prepend(newMestoElement);
+  createCard ({name: titleInput.value, link: imageInput.value})
+  mestoList.prepend(createCard({name: titleInput.value, link: imageInput.value}));
   closePopup(popupAddMesto);
   evt.target.reset();
 }
@@ -94,6 +99,13 @@ function addHandleFormSubmit (evt) {
 formMesto.addEventListener('submit', addHandleFormSubmit);
 
 //CЛУШАТЕЛИ И ОБРАБОТЧИКИ
+
+//универсальный слушатель на крестики
+closeButtons.forEach((button) => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', closePopup(popup));
+})
+
 
 
 //слушатели на открытие и закрытие попапа редактирования профиля
