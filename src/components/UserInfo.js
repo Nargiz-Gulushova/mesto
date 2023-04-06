@@ -13,13 +13,7 @@ export default class UserInfo {
     };
     return userInfo;
   }
-  setInputValues () {
-    const nameInput = document.querySelector('.popup__input_type_name');
-    const jobInput = document.querySelector('.popup__input_type_job');
-    const userInfo = this.getUserInfo();
-    nameInput.value = userInfo.name;
-    jobInput.value = userInfo.job;
-  }
+
   setUserInfo (info) {
     this._userName.textContent = info.name;
     this._userJob.textContent = info.job;

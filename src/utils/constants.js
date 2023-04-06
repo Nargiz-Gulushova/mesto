@@ -20,7 +20,6 @@ export const popupImg = document.querySelector('.popup_img');
 export const popupCloseImg = popupImg.querySelector('.popup__close_img');
 export const mestoList = document.querySelector('.mesto__list'); //ul-container with cards in html
 export const popupCaption = popupImg.querySelector('.popup__caption');
-export const popupImage = popupImg.querySelector('.popup__image');
 export const closeButtons = document.querySelectorAll('.popup__close')
 
 export const initialCards = [

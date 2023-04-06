@@ -17,7 +17,6 @@ import {
   popupImg,
   popupCloseImg,
   popupCaption,
-  popupImage,
   closeButtons,
   initialCards,
 } from '../utils/constants';
@@ -46,8 +45,9 @@ function createCard(item) {
 // объявление экземпляра класса Section с передачей в аргументы функции renderCard и темплейта
 const section = new Section({
   renderer: (item) => {
-    renderCard(item)}},
-  '#mesto-template');
+    renderCard(item)
+  }},
+    '.mesto__list');
 
 // добавляем изначальные карточки методом класса
 section.renderItems(initialCards);
@@ -63,12 +63,14 @@ function renderCard (item) {
 // код по Popup
 
 // код по PopupWithImage
+// создаем экземпляр попапа изображения
+const popupImage = new PopupWithImage (popupImg);
+// вешаем слушатель на попап
+popupImage.setEventListeners();
+
 // функция, описывающая поведение при нажатии на карточку
 export function handleImageClick(name, image) {
-  const popupImage = new PopupWithImage (popupImg);
   popupImage.open(name, image);
-  popupImage.setEventListeners();
-
 }
 
 
@@ -106,7 +108,9 @@ const profileEditPopup = new PopupWithForm (popupEditProfile, {
 })
 
 buttenOpenPopupProfile.addEventListener('click', () => {
-  userInfo.setInputValues();
+  const userData = userInfo.getUserInfo();
+  nameInput.value = userData.name;
+  jobInput.value = userData.job;
   profileEditPopup.open();
 })
 
