@@ -32,7 +32,6 @@ export default class Mesto {
 
   _deleteMesto() {
     this._element.remove()
-    //evt.target.closest('.mesto__item').remove();
   };
 
   _toggleLike(evt) {
@@ -48,7 +47,6 @@ export default class Mesto {
       this._handleImageClick(this._name, this._image);
     });
   }
-
 };
 
 
