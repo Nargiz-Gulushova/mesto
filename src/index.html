@@ -9,17 +9,17 @@
 </head>
 <body class="page">
   <header class="header">
-    <img class="header__logo" src="./images/logo.svg" alt="Логотип Mesto Russia">
+    <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип Mesto Russia">
   </header>
   <main class="content">
     <section class="profile">
-      <img class="profile__avatar" src="./images/Jacques_Cousteau.png" alt="Фото профиля Жака-Ива Кусто">
+      <img class="profile__avatar" src="<%=require('./images/Jacques_Cousteau.png')%>" alt="Фото профиля Жака-Ива Кусто">
       <div class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
-        <button class="profile__edit-button" aria-label="Редактировать" type="button"><img src="./images/edit-button.svg" alt="Кнопка редактирования"></button>
+        <button class="profile__edit-button" aria-label="Редактировать" type="button"><img src="<%=require('./images/edit-button.svg')%>" alt="Кнопка редактирования"></button>
         <p class="profile__job">Исследователь океана</p>
       </div>
-      <button class="profile__add-button" aria-label ="Добавить" type="button"><img src="./images/add-button.svg" alt="Кнопка Добавить"></button>
+      <button class="profile__add-button" aria-label ="Добавить" type="button"><img src="<%=require('./images/add-button.svg')%>" alt="Кнопка Добавить"></button>
     </section>
     <section class="mesto">
       <ul class="mesto__list">
@@ -125,8 +125,5 @@
       </div>
     </li>
   </template>
-
-  <script type="module" src="./pages/index.js"></script>
-
 </body>
 </html>

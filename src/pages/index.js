@@ -20,8 +20,8 @@ import {
   popupImage,
   closeButtons,
   initialCards,
-} from '../utils/constants.js';
-import Mesto from '../components/Mesto.js';
+} from '../utils/constants';
+import Mesto from '../components/Mesto';
 import Section  from '../components/Section.js';
 // import Popup from '../components/Popup.js';
 import PopupWithImage from '../components/PopupWithImage.js';
@@ -30,6 +30,7 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import FormValidator from '../components/FormValidator.js';
 import UserInfo from '../components/UserInfo.js';
 
+import './index.css';
 
 // код по Mesto
 
@@ -105,7 +106,8 @@ const profileEditPopup = new PopupWithForm (popupEditProfile, {
 })
 
 buttenOpenPopupProfile.addEventListener('click', () => {
-  profileEditPopup.open()
+  userInfo.setInputValues();
+  profileEditPopup.open();
 })
 
 profileEditPopup.setEventListeners();
