@@ -86,5 +86,10 @@ _checkInputValidity (inputElement) {
     this._formElement.addEventListener('submit', this._disableSubmit);
     this._setEventListeners();
   };
+
+  resetValidation() {
+    this._inputList.forEach(input => this._hideInputError(input));
+    this._toggleButtonState();
+  }
 };
 

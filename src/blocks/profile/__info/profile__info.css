@@ -1,19 +1,14 @@
 .profile__info {
-  display: grid;
-  grid-template-columns: 1fr 10px;
-  gap: 7px 10px;
-  align-items: center;
-  text-align: center;
-  padding-top: 24.25px;
-  padding-bottom: 34px;
-  padding-left: 19px;
+  max-width: 536px;
+  padding: 0 0 0 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (max-width: 917px) {
   .profile__info {
-    gap: 9px 18px;
-    margin: 0 288px 0 30px;
-    padding: 0;
-    text-align: start;
+    max-width: 282px;
+    padding: 26px 0 0 0;
   }
 }

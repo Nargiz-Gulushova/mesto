@@ -12,11 +12,17 @@
   </header>
   <main class="content">
     <section class="profile">
-      <img class="profile__avatar" src="<%=require('./images/Jacques_Cousteau.png')%>" alt="Фото профиля Жака-Ива Кусто">
+      <div class="profile__user-container">
+        <div class="profile__avatar-container">
+          <img src="<%=require('./images/Jacques_Cousteau.png')%>" alt="Аватар пользователя" class="profile__avatar">
+        </div>
       <div class="profile__info">
-        <h1 class="profile__name">Жак-Ив Кусто</h1>
-        <button class="profile__edit-button" aria-label="Редактировать" type="button"><img src="<%=require('./images/edit-button.svg')%>" alt="Кнопка редактирования"></button>
+        <div class="profile__name-container">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__edit-button" aria-label="Редактировать" type="button"></button>
+        </div>
         <p class="profile__job">Исследователь океана</p>
+        </div>
       </div>
       <button class="profile__add-button" aria-label ="Добавить" type="button"><img src="<%=require('./images/add-button.svg')%>" alt="Кнопка Добавить"></button>
     </section>
@@ -103,6 +109,29 @@
       </div>
     </div>
   </div>
+  <!---Попап редактирования аватара-->
+  <div class="popup popup_edit-avatar">
+    <div class="popup__container">
+      <button class="popup__close popup__close_edit-avatar" aria-label="Закрыть" type="button"></button>
+      <div class="popup__content">
+        <h2 class="popup__title">Новое место</h2>
+        <form class = "popup__form popup__form_edit-avatar" name="form-edit-avatar" novalidate>
+          <input
+            id="input-avatar-link"
+            class="popup__input popup__input_type_avatar-link"
+            type="url"
+            placeholder="Ссылка на аватар"
+            name="input-avatar-link"
+            required>
+          <span
+            class="input-avatar-link-error popup__error">
+          </span>
+
+          <button class="popup__submit-button popup__submit-button_edit-avatar" type="submit">Создать</button>
+        </form>
+      </div>
+    </div>
+  </div>
   <!---Попап открытия картинки-->
   <div class="popup popup_img">
     <div class="popup__container-img">
@@ -130,7 +159,7 @@
       <img class="mesto__image" src="#" alt="#">
       <div class="mesto__wrap">
         <h2 class="mesto__title"></h2>
-        <div>
+        <div class="mesto__like-container">
           <button class="mesto__like-button" aria-label="Нравится" type="button"></button>
           <p class="mesto__like-counter"></p>
         </div>
