@@ -20,7 +20,17 @@ export const popupImg = document.querySelector('.popup_img');
 export const popupCloseImg = popupImg.querySelector('.popup__close_img');
 export const mestoList = document.querySelector('.mesto__list'); //ul-container with cards in html
 export const popupCaption = popupImg.querySelector('.popup__caption');
-export const closeButtons = document.querySelectorAll('.popup__close')
+export const closeButtons = document.querySelectorAll('.popup__close');
+
+//Объект селекторов и классов
+export const formValidationObj = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_disabled',
+  inputErrorClass: 'popup__input_type_error',//, вот здесь только красное нижнее подчеркивание в свойствах
+  errorClass: 'popup__error_visible'  //а здесь стилизация видимости и текста ошибки
+};
 
 export const initialCards = [
   {

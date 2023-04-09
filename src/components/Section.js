@@ -7,7 +7,7 @@ export default class Section {
 
   // метод для добавления первоначальных карточек через внешнюю функцию рендерер
   renderItems(items) {
-    items.forEach((item) => this._renderer(item))
+    items.reverse().forEach((item) => this._renderer(item))
   }
 
   // метод добавления новой карточки в разметку в начало списка
@@ -15,6 +15,3 @@ export default class Section {
     this._mestoList.prepend(itemHtml)
   }
 }
-
-
-
