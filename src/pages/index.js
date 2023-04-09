@@ -1,23 +1,13 @@
 import {
   popupEditProfile,
   buttenOpenPopupProfile,
-  buttenClosePopupProfile,
   formProfile,
   nameInput,
   jobInput,
-  profileName,
-  profileJob,
   popupAddMesto,
   popupOpenAddMesto,
-  popupCloseAddMesto,
-  titleInput,
-  imageInput,
   formMesto,
-  mestoList,
   popupImg,
-  popupCloseImg,
-  popupCaption,
-  closeButtons,
   initialCards,
 } from '../utils/constants';
 import Mesto from '../components/Mesto';
@@ -30,6 +20,20 @@ import FormValidator from '../components/FormValidator.js';
 import UserInfo from '../components/UserInfo.js';
 
 import './index.css';
+
+import Api  from '../components/Api.js';
+
+// Код по API
+const api = new Api({
+ baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-62',
+ headers: {
+   authorization: '325a4350-92a5-4daf-ba00-0f43bbc97ef3',
+   'Content-Type': 'application/json'
+ }
+});
+
+api.getInitialCards()
+  .then(data => section.renderItems(data))
 
 // код по Mesto
 
@@ -50,7 +54,7 @@ const section = new Section({
     '.mesto__list');
 
 // добавляем изначальные карточки методом класса
-section.renderItems(initialCards);
+// section.renderItems(initialCards);
 
 
 // описание функции renderCard для вставки новой карточки в разметку через метод класса Section
