@@ -4,6 +4,7 @@ export default class Popup {
     this._popup = popup;
     this._handleEscClose = this._handleEscClose.bind(this);
     this._closeButton = this._popup.querySelector('.popup__close');
+    this._sumbitButton = this._popup.querySelector('.popup__submit-button');
   }
 
   _handleEscClose (evt) {
@@ -22,6 +23,10 @@ export default class Popup {
     this._popup.classList.remove('popup_opened');
 
     document.removeEventListener('keydown', this._handleEscClose);
+  }
+
+  renderLoading(text) {
+    this._sumbitButton.textContent = text;
   }
 
   setEventListeners () {

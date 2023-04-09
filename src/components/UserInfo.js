@@ -1,7 +1,8 @@
 export default class UserInfo {
-  constructor ({userName, userJob}) {
+  constructor ({userName, userJob, userAvatar}) {
     this._userName = document.querySelector(userName);
     this._userJob = document.querySelector(userJob);
+    this._userAvatar = document.querySelector(userAvatar);
   }
 
   // возвращает текущие значения пользователя из разметки для
@@ -17,5 +18,9 @@ export default class UserInfo {
   setUserInfo (info) {
     this._userName.textContent = info.name;
     this._userJob.textContent = info.job;
+  }
+
+  setUserAvatar (avatar) {
+    this._userAvatar.src = avatar;
   }
 }

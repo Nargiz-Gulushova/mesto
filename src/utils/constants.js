@@ -4,6 +4,7 @@
 export const profileElement = document.querySelector('.profile');
 export const popupEditProfile = document.querySelector('.popup_edit-profile'); //попап редактирования профиля
 export const popupEditAvatar = document.querySelector('.popup_edit-avatar');
+export const popupConfirm = document.querySelector('.popup_confirm');
 export const buttenOpenPopupProfile = profileElement.querySelector('.profile__edit-button');
 export const buttenClosePopupProfile = popupEditProfile.querySelector('.popup__close_edit-profile');
 export const formProfile = popupEditProfile.querySelector('.popup__form_edit-profile');

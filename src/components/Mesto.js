@@ -10,6 +10,7 @@ export default class Mesto {
     this._handleImageClick = handlers.handleImageClick; // коллбэк полноразмерного изображения
     this._handlePutLike = handlers.handlePutLike; // коллбэк на постановку лайка
     this._handleDeleteLike = handlers.handleDeleteLike; // коллбэк на удаление лайка
+    this._handleCardDelete = handlers.handleCardDelete; // коллбэк на удаление карточки
   }
   // создание DOM-элемента из темплейт
   _getTemplate() {
@@ -56,7 +57,7 @@ export default class Mesto {
     return this._likeList.find(user => this._currentUserId === user._id);
   };
 
-  _deleteMesto() {
+  deleteMesto() {
     this._element.remove();
   };
   // переключение кнопки лайка
@@ -73,7 +74,7 @@ export default class Mesto {
     this._mestoLikeButton.addEventListener ('click', () => this._toggleLike());
     // кнопка удаления с проверкой на владельца карточки
     if (this._currentUserId === this._cardOwnerId) {
-      this._mestoDeleteButton.addEventListener('click', () => this._deleteMesto());
+      this._mestoDeleteButton.addEventListener('click', () => this._handleCardDelete(this._cardId, this));
     } else {
       this._mestoDeleteButton.remove();
     }

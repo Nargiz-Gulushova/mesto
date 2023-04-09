@@ -5,11 +5,4 @@
   justify-content: stretch;
   margin: 0;
   padding: 0;
-  min-height: 175px;
-}
-
-@media screen and (min-width:1280px) {
-  .popup__form {
-    min-height: 160px;
-  }
 }
