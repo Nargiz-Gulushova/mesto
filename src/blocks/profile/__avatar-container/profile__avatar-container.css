@@ -10,7 +10,7 @@
 
 .profile__avatar-container::before {
   content: "";
-  background: rgba(0, 0, 0, .8) url(../../../images/edit-avatar.svg);
+  background: rgba(0, 0, 0, 0.8) url(../../../images/edit-avatar.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 26px 26px;

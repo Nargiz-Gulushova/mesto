@@ -10,10 +10,12 @@ export default class PopupWithConfirmation extends Popup {
     this._cardId = cardId;
     this._mestoElement = mestoElement;
     super.open();
-  };
+  }
 
   setEventListeners() {
     super.setEventListeners();
-    this._sumbitButton.addEventListener('click', () => this._handleCardDelete(this._cardId, this._mestoElement));
-  };
-};
+    this._sumbitButton.addEventListener("click", () =>
+      this._handleCardDelete(this._cardId, this._mestoElement)
+    );
+  }
+}

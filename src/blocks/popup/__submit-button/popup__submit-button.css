@@ -4,7 +4,7 @@
   border: none;
   background: #000000;
   border-radius: 2px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.21;
@@ -12,14 +12,14 @@
   min-height: 46px;
   cursor: pointer;
   max-width: 238px;
-  transition: opacity .5s ease;
+  transition: opacity 0.5s ease;
 }
 
 .popup__submit-button:hover {
   opacity: 80%;
 }
 
-@media screen and (min-width:1280px) {
+@media screen and (min-width: 1280px) {
   .popup__submit-button {
     max-width: 358px;
     font-size: 18px;

@@ -1,5 +1,5 @@
 export default class Section {
-  constructor ({renderer}, containerSelector) {
+  constructor({ renderer }, containerSelector) {
     this._renderer = renderer;
     // this._templateSelector = templateSelector;
     this._mestoList = document.querySelector(containerSelector);
@@ -7,11 +7,11 @@ export default class Section {
 
   // метод для добавления первоначальных карточек через внешнюю функцию рендерер
   renderItems(items) {
-    items.reverse().forEach((item) => this._renderer(item))
+    items.reverse().forEach((item) => this._renderer(item));
   }
 
   // метод добавления новой карточки в разметку в начало списка
   addItem(itemHtml) {
-    this._mestoList.prepend(itemHtml)
+    this._mestoList.prepend(itemHtml);
   }
 }
